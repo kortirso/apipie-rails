@@ -34,6 +34,10 @@
         <% m[:apis].each do |a| %>
           <tr>
             <td>
+              <% Rails.logger.debug m[:doc_url] %>
+              <% Rails.logger.debug m[:doc_url].split('/').last.split('.') %>
+              <% Rails.logger.debug m[:doc_url].split('/').last.split('.').size == 3 %>
+              <% Rails.logger.debug m[:doc_url].sub('.en.html', '.html') %>
               <% new_link = m[:doc_url].split('/').last.split('.').size == 3 ? m[:doc_url].sub!('.en.html', '.html') : m[:doc_url] %>
               <a href='<%= new_link %><%= @doc[:link_extension] %>'><%= a[:http_method] %> <%= a[:api_url] %></a>
               <% if a[:deprecated] %>
