@@ -79,7 +79,16 @@ module Apipie
     helper_method :heading
 
     def get_language
-      Apipie.configuration.default_locale
+      lang = Apipie.configuration.default_locale
+      [:resource, :method, :version].each do |par|
+        if params[par]
+          splitted = params[par].split('.')
+          if splitted.length > 2
+            params[par].sub!(".#{lang}", '')
+          end
+        end
+      end
+      lang
     end
 
     def authorized_doc
