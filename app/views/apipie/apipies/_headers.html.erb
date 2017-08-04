@@ -17,7 +17,7 @@
             </small>
           </td>
           <td>
-            <%= header[:description].html_safe %>
+            <%= raw(header[:description]) %>
           </td>
         </tr>
       <% end %>
