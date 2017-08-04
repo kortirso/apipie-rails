@@ -31,7 +31,7 @@ module Apipie
         Apipie.load_documentation if Apipie.configuration.reload_controllers? || (Rails.version.to_i >= 4.0 && !Rails.application.config.eager_load)
 
         I18n.locale = @language
-        @doc = Apipie.to_json(params[:version], params[:resource], params[:method], @language)
+        @doc = Apipie.to_json(params[:version], params[:resource], params[:method].sub!('.en', ''), @language)
 
         @doc = authorized_doc
 
