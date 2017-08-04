@@ -34,7 +34,8 @@
         <% m[:apis].each do |a| %>
           <tr>
             <td>
-              <a href='<%= m[:doc_url] %><%= @doc[:link_extension] %>'><%= a[:http_method] %> <%= a[:api_url] %></a>
+              <%- new_link = a[:api_url].split('/').last.split('.').size == 3 ? a[:api_url].sub!('.en', '') : a[:api_url] %>
+              <a href='<%= m[:doc_url] %><%= @doc[:link_extension] %>'><%= a[:http_method] %> <%= new_link %></a>
               <% if a[:deprecated] %>
                 <code>DEPRECATED</code>
               <% end %>
