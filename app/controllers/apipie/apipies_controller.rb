@@ -85,7 +85,7 @@ module Apipie
           splitted = params[par].split('.')
           if splitted.length > 1 && Apipie.configuration.languages.include?(splitted.last)
             lang = splitted.last
-            params[par].sub!(".#{lang}", '')
+            # params[par].sub!(".#{lang}", '')
           end
         end
       end
