@@ -34,7 +34,11 @@
         <% m[:apis].each do |a| %>
           <tr>
             <td>
-              <%- new_link = a[:api_url].split('/').last.split('.').size == 3 ? a[:api_url].sub!('.en', '') : a[:api_url] %>
+              <% Rails.logger.debug a[:api_url] %>
+              <% Rails.logger.debug a[:api_url].split('/').last.split('.') %>
+              <% Rails.logger.debug a[:api_url].split('/').last.split('.').size == 3 %>
+              <% Rails.logger.debug a[:api_url].sub!('.en.html', '.html') %>
+              <% new_link = a[:api_url].split('/').last.split('.').size == 3 ? a[:api_url].sub!('.en.html', '.html') : a[:api_url] %>
               <a href='<%= m[:doc_url] %><%= @doc[:link_extension] %>'><%= a[:http_method] %> <%= new_link %></a>
               <% if a[:deprecated] %>
                 <code>DEPRECATED</code>
